@@ -1,0 +1,21 @@
+2026/4/19 （Xing Zhang）
+1.Added the Reload System and Bullet System
+2.Transformed the Goblin monster into a fully functional attackable enemy
+3.Implemented ScriptableObjects to store monster data.
+
+2026/5/5 (Xing Zhang)
+1.Added player health system and implemented player damage reception mechanics.
+2.Added a reload progress bar UI.
+3.Added a level-up buff selection system.
+4.Added spike monsters and swarming linear-flying monsters.
+5.Added 5 types of buffs: max health boost, bullet damage boost, reload speed boost, max ammo capacity boost, and fire rate boost.
+6.Added the feature that monsters drop experience orbs upon death.
+7.Revised the player's experience acquisition method (collect experience orbs dropped by monsters).
+
+2026/5/8 (Xing Zhang)
+1. Optimized and refined the code for the infinite map system.
+2. Added a long-range jellyfish enemy.
+3. Improved the enemy spawning logic.
+4. Added a mechanic where experience orbs disappear after a period of time.
+5. Added descriptive text for all buffs.
+6. Fixed the issue of enemy sprites being obscured due to sorting layer problems.
