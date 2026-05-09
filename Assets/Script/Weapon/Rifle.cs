@@ -80,11 +80,11 @@ public class Rifle : MonoBehaviour
     {
         currentbulletNumber--;
         animator.SetTrigger("Shoot");
-        GameObject bullet = GameManager.instance.poolManager.Get(0);
+        GameObject bullet = PoolManager.instance.Get(0);
         bullet.GetComponent<Bullet>().SetSpeed(direction);//Call the flight function of the bullet
         bullet.GetComponent<Bullet>().damage = bulletDamage;
         bullet.transform.position= muzzle.position;
-        GameObject shell=GameManager.instance.poolManager.Get(1);
+        GameObject shell= PoolManager.instance.Get(1);
         shell.transform.position = shellPosition.position;
     }
 

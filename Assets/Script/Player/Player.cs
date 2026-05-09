@@ -1,9 +1,13 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 //欢迎来到玩家以及属性控制中心
 public class Player : MonoBehaviour
 {
+    [Header("Camera Setting")]
+    public CinemachineImpulseSource impulseSource;
+
     [Header("Move Parameter")]
     public Vector2 moveDirection;
     public float moveSpeed;
@@ -32,6 +36,7 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+        impulseSource=GetComponent<CinemachineImpulseSource>();
 
     }
 
@@ -75,7 +80,9 @@ public class Player : MonoBehaviour
                         currentHP = 0;
                         isLive = false;
                     }
+                    impulseSource.GenerateImpulse();
                     KnockbackNearbyEnemies();
+                   
 
                 }
                 // 待写死亡条件

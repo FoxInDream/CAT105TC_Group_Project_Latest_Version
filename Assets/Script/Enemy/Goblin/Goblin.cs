@@ -104,7 +104,7 @@ public class Goblin : MonoBehaviour
     }
     protected void SpawnExpOrbs()
     {
-        GameObject lootExp = GameManager.instance.poolManager.Get(4);
+        GameObject lootExp = PoolManager.instance.Get(4);
         lootExp.transform.position= transform.position;
     }
         

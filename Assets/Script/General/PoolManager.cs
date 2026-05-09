@@ -9,9 +9,16 @@ public class PoolManager : MonoBehaviour
     //注 0是子弹，1是弹壳，2是爆炸效果，3是goblin，4是经验块,5是蝙蝠,6是地刺,7是飞行水母，8是水母的子弹
     public GameObject[] prefabs;
     private List<GameObject>[] pools;
+    public static PoolManager instance;   
 
+    
     private void Awake()
     {
+
+        instance = this;
+
+
+
         pools = new List<GameObject>[prefabs.Length]; //初始化对象池
 
         for (int index = 0; index < pools.Length; index++)

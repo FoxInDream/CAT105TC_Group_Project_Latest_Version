@@ -49,7 +49,7 @@ public class FloatingJellyfish : Goblin
         if (interval <= 0)
         {
             interval = FireRate;
-            GameObject jellyfishBullet = GameManager.instance.poolManager.Get(8);
+            GameObject jellyfishBullet = PoolManager.instance.Get(8);
             jellyfishBullet.transform.position = transform.position;
             jellyfishBullet.GetComponent<JellyfishBullet>().SetSpeed(targetDirection);
         }

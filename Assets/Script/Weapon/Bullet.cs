@@ -30,7 +30,7 @@ public class Bullet : MonoBehaviour
     {
         if (collision.CompareTag("Enemy") || collision.CompareTag("EnemyBullet"))
         {
-            GameObject explosion = GameManager.instance.poolManager.Get(2);
+            GameObject explosion = PoolManager.instance.Get(2);
             explosion.transform.position = transform.position;
             gameObject.SetActive(false);
         }
@@ -43,7 +43,7 @@ public class Bullet : MonoBehaviour
         float distanceY = Mathf.Abs(GameManager.instance.player.transform.position.y - transform.position.y);
         if (distanceX > 10 || distanceY > 10)
         {
-            GameObject explosion = GameManager.instance.poolManager.Get(2);
+            GameObject explosion = PoolManager.instance.Get(2);
             explosion.transform.position = transform.position;
             gameObject.SetActive(false);
         }

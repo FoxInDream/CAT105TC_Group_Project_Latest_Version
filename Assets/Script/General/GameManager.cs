@@ -7,7 +7,6 @@ public class GameManager : MonoBehaviour
     //Welcome to the Game Management System, which streamlines cross-object script referencing and enables various global control functionalities.
     [Header("Components")]
     public Player player;
-    public PoolManager poolManager;
     public Rifle rifle;
     public LevelUpSystem levelUpSystem;
     public Spawner spawner;
