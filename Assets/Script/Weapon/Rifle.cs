@@ -38,7 +38,7 @@ public class Rifle : MonoBehaviour
     }
     private void Update()
     {
-        
+        if(!GameManager.instance.isPauseOpen)
         Direction(); //Control the rotation direction of the gun
     }
 

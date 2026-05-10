@@ -10,10 +10,13 @@ public class GameManager : MonoBehaviour
     public Rifle rifle;
     public LevelUpSystem levelUpSystem;
     public Spawner spawner;
-    public static GameManager instance; //Static members can be accessed from other scripts without creating an instance.
+    public Pause pause;
+    public static GameManager instance;
+    //Static members can be accessed from other scripts without creating an instance.
     [Header("Variables")]
     public int kill;
     public float timer;
+    public bool isPauseOpen;
     private void Awake()
     {
         kill = 0;
@@ -28,14 +31,29 @@ public class GameManager : MonoBehaviour
             timer = 0;
             KillAllEnemies();
         }
+
+        if(Input.GetKeyDown(KeyCode.Escape)&& isPauseOpen)
+        {
+            pause.OnResumeGame();
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            pause.OpenPausePanel();
+        }
+
+
+
     }
     public void Stop()
     {
         Time.timeScale = 0;
+        isPauseOpen = true;
     }
     public void Resume()
     {
         Time.timeScale = 1;
+        isPauseOpen = false;
+
     }
 
 
@@ -48,4 +66,5 @@ public class GameManager : MonoBehaviour
             enemy.GetComponent<Animator>().SetTrigger("Dead");
         }
     }
+
 }

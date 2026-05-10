@@ -46,14 +46,20 @@ public class Player : MonoBehaviour
     }
     public void Update()
     {
-        FlipByMouse();
-        Mousesign();
+        if (!GameManager.instance.isPauseOpen)
+        {
+            FlipByMouse();
+            SetCustomCursor();
+        }
+        else
+        {
+            SetDefaultCursor();
+        }
     }
     private void FixedUpdate()
     {
         Move();
     }
-
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
@@ -128,10 +134,15 @@ public class Player : MonoBehaviour
 
 
 
-    private void Mousesign() //Change the cursor in game
+    private void SetCustomCursor() //Change the cursor in game
     {
         Vector2 mousePoint = new Vector2(201, 201);
         Cursor.SetCursor(cursorTexture, mousePoint, CursorMode.Auto);
+    }
+
+    private void SetDefaultCursor()
+    {
+        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
     }
     public void GetExp()
     {
