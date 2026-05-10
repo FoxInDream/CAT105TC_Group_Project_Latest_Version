@@ -36,7 +36,11 @@ public class Spawner : MonoBehaviour
     }
     private void Update()
     {
-        Spawn();
+        if(GameManager.instance.timer>0)
+        {
+            Spawn();
+        }
+      
     }
     private void Spawn() //Spawn Order Logic	
     {
@@ -102,7 +106,7 @@ public class Spawner : MonoBehaviour
 
 
 
-                if (spawnTimer2 > 15)
+                if (spawnTimer2 > 12)
                 {
                     spawnTimer2 = 0;
                     SpawnCluster((int)MonsterType.Bat, 10, 6, 1);//Parameter: Prefab Index, maxHealth, Speed, Damage

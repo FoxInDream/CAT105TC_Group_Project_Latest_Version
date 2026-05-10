@@ -70,9 +70,13 @@ public class Goblin : MonoBehaviour
                 gameObject.layer = LayerMask.NameToLayer("DeadEnemy");
                 rb.velocity = Vector2.zero;
                 animator.SetTrigger("Dead");
-                SpawnExpOrbs();
+                SpawnExpLoot();
                 GameManager.instance.kill++;
             }
+            GameObject damageNumber = PoolManager.instance.Get(9);
+            damageNumber.transform.SetParent(transform);
+            //´ý×ö
+
         }
     }
 
@@ -99,10 +103,10 @@ public class Goblin : MonoBehaviour
     }
     public void Dead()
     {
-        spriteRenderer.color = Color.white;
         gameObject.SetActive(false);
+        spriteRenderer.color = Color.white;
     }
-    protected void SpawnExpOrbs()
+    protected void SpawnExpLoot()
     {
         GameObject lootExp = PoolManager.instance.Get(4);
         lootExp.transform.position= transform.position;

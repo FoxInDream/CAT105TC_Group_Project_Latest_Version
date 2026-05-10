@@ -16893,6 +16893,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  damageNumber: 0
 --- !u!1 &204167154
 GameObject:
   m_ObjectHideFlags: 0
@@ -51195,6 +51196,7 @@ MonoBehaviour:
   - {fileID: 5494815485438493690, guid: 5259a1bf5a0f41f4e91a77357c5305e1, type: 3}
   - {fileID: 8710229592228422794, guid: 188a98a864a81bf47a8d5c4651319dbc, type: 3}
   - {fileID: 473402160050664910, guid: ceac18d177e54db4f8709c0c31cf0638, type: 3}
+  - {fileID: 247197217231279235, guid: 6d731bae1883d0545846fb3d098c28d6, type: 3}
 --- !u!4 &607806093
 Transform:
   m_ObjectHideFlags: 0
@@ -103433,6 +103435,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 3
+  damageNumber: 0
 --- !u!1 &1573634481
 GameObject:
   m_ObjectHideFlags: 0
@@ -120097,6 +120100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 4
+  damageNumber: 0
 --- !u!1 &1858109650
 GameObject:
   m_ObjectHideFlags: 0
@@ -120364,6 +120368,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 2
+  damageNumber: 0
 --- !u!114 &1896924295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120584,6 +120589,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
+  damageNumber: 0
 --- !u!1 &1968031777
 GameObject:
   m_ObjectHideFlags: 0
@@ -120841,6 +120847,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 5
+  damageNumber: 0
 --- !u!114 &2005999716
 MonoBehaviour:
   m_ObjectHideFlags: 0

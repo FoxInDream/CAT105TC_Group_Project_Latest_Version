@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
         if(timer <= 0)
         {
             timer = 0;
+            KillAllEnemies();
         }
     }
     public void Stop()
@@ -38,4 +39,13 @@ public class GameManager : MonoBehaviour
     }
 
 
+    private void KillAllEnemies()
+    {
+        GameObject[] allEnemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+        foreach(GameObject enemy in allEnemies)
+        {
+            enemy.GetComponent<Animator>().SetTrigger("Dead");
+        }
+    }
 }

@@ -6,10 +6,12 @@ public class ExpLoot : MonoBehaviour
 {
     private float disapperTimer;
     private Animator animator;
+    private SpriteRenderer spriteRenderer;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
     private void Update()
     {
@@ -29,5 +31,6 @@ public class ExpLoot : MonoBehaviour
     public void Disapper()
     {
         gameObject.SetActive(false);
+        spriteRenderer.color = new Color(1, 1, 1, 1);
     }
 }

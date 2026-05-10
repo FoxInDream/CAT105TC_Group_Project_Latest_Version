@@ -6,7 +6,7 @@ public class PoolManager : MonoBehaviour
 {
     //欢迎来到对象池，该系统可以用于优化因瞬间销毁太多物体或者生成太多物体而造成的卡顿问题
 
-    //注 0是子弹，1是弹壳，2是爆炸效果，3是goblin，4是经验块,5是蝙蝠,6是地刺,7是飞行水母，8是水母的子弹
+    //注 0是子弹，1是弹壳，2是爆炸效果，3是goblin，4是经验块,5是蝙蝠,6是地刺,7是飞行水母，8是水母的子弹,9是伤害显示UI
     public GameObject[] prefabs;
     private List<GameObject>[] pools;
     public static PoolManager instance;   

@@ -12,16 +12,26 @@ public class HUD : MonoBehaviour
         Level,
         Kill,
         TotalTimer,
-        Heart
+        Heart,
+        DamageNumber
     }
     public InfomationType type;
+    public float damageNumber;
     private Text uiText;
     private Slider uiSlider;
-
+    private float lifeTimer;
+    private GameObject poolManager;
+  
+    
     private void Awake()
     {
        uiText = GetComponentInChildren<Text>();
        uiSlider = GetComponentInChildren<Slider>(true);
+       poolManager= GameObject.Find("PoolManager");
+    }
+    private void OnEnable()
+    {
+        lifeTimer = 2f;
     }
     private void LateUpdate()
     {
@@ -52,6 +62,15 @@ public class HUD : MonoBehaviour
 
                 break;
             case InfomationType.TotalTimer:
+                if (GameManager.instance.timer<= 30)
+                {
+                    uiText.color = Color.red; 
+                }
+                else
+                {
+                    uiText.color = Color.white; 
+                }
+
                 int minutes = Mathf.FloorToInt(GameManager.instance.timer / 60);
                 int seconds = Mathf.FloorToInt(GameManager.instance.timer % 60);
                 uiText.text = string.Format("{0:D2}:{1:D2}", minutes, seconds);
@@ -62,6 +81,22 @@ public class HUD : MonoBehaviour
 
             case InfomationType.Heart:
                 uiText.text = string.Format("{0}/{1}", GameManager.instance.player.currentHP, GameManager.instance.player.maxHP);
+                break;
+
+
+
+            case InfomationType.DamageNumber:
+                if(lifeTimer>0)
+                {
+                    lifeTimer-=Time.deltaTime;
+                    transform.position += new Vector3(0, 2 * Time.deltaTime, 0);
+                    uiText.text = string.Format("{0}", damageNumber);
+                }
+                else
+                {
+                    gameObject.SetActive(false);
+                    transform.SetParent(poolManager.transform);
+                }
                 break;
 
         }

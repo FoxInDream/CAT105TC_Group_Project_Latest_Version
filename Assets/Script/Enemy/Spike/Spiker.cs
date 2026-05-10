@@ -34,7 +34,7 @@ public class Spiker : Goblin
                 isLive = false;
                 gameObject.layer = LayerMask.NameToLayer("DeadEnemy");
                 animator.SetTrigger("Dead");
-                SpawnExpOrbs();
+                SpawnExpLoot();
                 GameManager.instance.spawner.spikerCount--;
                 GameManager.instance.kill++;
             }
