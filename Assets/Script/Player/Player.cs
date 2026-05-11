@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Animator animator;
     public Texture2D cursorTexture;
+    public GameObject settlement;
     [Header("State Parameter")]
     public float currentExp;
     public float maxExp;
@@ -91,7 +92,12 @@ public class Player : MonoBehaviour
                    
 
                 }
-                // ´ıĞ´ËÀÍöÌõ¼ş
+                if (currentHP <= 0)
+                {
+                    currentHP = 0;
+                    isLive = false;
+                    Settlement();
+                }// ´ıĞ´ËÀÍöÌõ¼ş
             }
         }
 
@@ -188,6 +194,11 @@ public class Player : MonoBehaviour
         isHurt = false;
     }
 
+    public void Settlement()
+    {
+        settlement.SetActive(true);
+        GameManager.instance.Stop();
+    }
 }
 
 
