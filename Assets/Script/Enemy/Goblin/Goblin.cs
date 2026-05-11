@@ -75,7 +75,10 @@ public class Goblin : MonoBehaviour
             }
             GameObject damageNumber = PoolManager.instance.Get(9);
             damageNumber.transform.SetParent(transform);
-            //´ý×ö
+            damageNumber.transform.position = transform.position;
+            damageNumber.GetComponent<HUD>().damageNumber = collision.GetComponent<Bullet>().damage;
+
+
 
         }
     }
