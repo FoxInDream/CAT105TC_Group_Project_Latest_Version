@@ -32,5 +32,6 @@ public class ExpLoot : MonoBehaviour
     {
         gameObject.SetActive(false);
         spriteRenderer.color = new Color(1, 1, 1, 1);
+
     }
 }

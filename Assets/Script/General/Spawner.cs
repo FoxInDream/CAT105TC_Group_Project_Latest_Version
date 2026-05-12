@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Rendering;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
@@ -11,7 +12,8 @@ public class Spawner : MonoBehaviour
         Goblin = 3,
         Bat = 5,
         Spiker = 6,
-        FlotingJellyfish = 7
+        FlotingJellyfish = 7,
+        Exploder=11
     }
 
 
@@ -22,9 +24,10 @@ public class Spawner : MonoBehaviour
     private Transform minSpawnPoint;
     [Header("Timer")]
     public float levelTimer;
-    public float spawnTimer1;
-    public float spawnTimer2;
-    public float spawnTimer3;
+    private float spawnTimer1;
+    private float spawnTimer2;
+    private float spawnTimer3;
+    private float spawnTimer4;
 
     public int level;
     private void Awake()
@@ -47,6 +50,7 @@ public class Spawner : MonoBehaviour
         spawnTimer1 += Time.deltaTime;
         spawnTimer2 += Time.deltaTime;
         spawnTimer3 += Time.deltaTime;
+        spawnTimer4 += Time.deltaTime;
 
         if (level < 8)
         {
@@ -56,6 +60,8 @@ public class Spawner : MonoBehaviour
                 levelTimer = 0;
                 spawnTimer1 = 0;
                 spawnTimer2 = 0;
+                spawnTimer3 = 0;
+                spawnTimer4 = 0;
                 level++;
             }
         }
@@ -72,6 +78,7 @@ public class Spawner : MonoBehaviour
                     GameObject goblin = PoolManager.instance.Get((int)MonsterType.Goblin);
                     goblin.GetComponent<Goblin>().Init(10, 3, 1); //Parameter:  maxHealth, Speed, Damage
                     goblin.transform.position = SpawnPonit();
+                    spawnTimer4 = 0;
                 }
                 break;
 
@@ -174,7 +181,7 @@ public class Spawner : MonoBehaviour
                 {
                     spawnTimer1 = 0;
                     GameObject goblin = PoolManager.instance.Get((int)MonsterType.Goblin);
-                    goblin.GetComponent<Goblin>().Init(20, 4, 1);
+                    goblin.GetComponent<Goblin>().Init(20, 3.5f, 1);
                     goblin.transform.position = SpawnPonit();
                 }
 
@@ -206,7 +213,7 @@ public class Spawner : MonoBehaviour
                 {
                     spawnTimer1 = 0;
                     GameObject goblin = PoolManager.instance.Get((int)MonsterType.Goblin);
-                    goblin.GetComponent<Goblin>().Init(25, 4, 1);
+                    goblin.GetComponent<Goblin>().Init(25, 3.5f, 1);
                     goblin.transform.position = SpawnPonit();
                 }
 
@@ -244,7 +251,7 @@ public class Spawner : MonoBehaviour
                 {
                     spawnTimer1 = 0;
                     GameObject goblin = PoolManager.instance.Get((int)MonsterType.Goblin);
-                    goblin.GetComponent<Goblin>().Init(25, 4, 1);
+                    goblin.GetComponent<Goblin>().Init(25, 3.5f, 1);
                     goblin.transform.position = SpawnPonit();
                 }
 
@@ -268,6 +275,14 @@ public class Spawner : MonoBehaviour
                     GameObject jellyfish = PoolManager.instance.Get((int)MonsterType.FlotingJellyfish);
                     jellyfish.GetComponent<Goblin>().Init(20, 3, 1); //Parameter:  maxHealth, Speed, Damage
                     jellyfish.transform.position = SpawnPonit();
+                }
+
+                if (spawnTimer4 > 10)
+                {
+                    spawnTimer4 = 0;
+                    GameObject exploder = PoolManager.instance.Get((int)MonsterType.Exploder);
+                    exploder.GetComponent<Goblin>().Init(15, 4, 0); //Parameter:  maxHealth, Speed, Damage
+                    exploder.transform.position = SpawnPonit();
                 }
 
                 break;

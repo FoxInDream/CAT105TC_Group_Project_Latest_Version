@@ -16,16 +16,15 @@ public class Player : MonoBehaviour
     [Header("Components")]
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
-    private Animator animator;
+    public Animator animator;
     public Texture2D cursorTexture;
-    public GameObject settlement;
     [Header("State Parameter")]
     public float currentExp;
     public float maxExp;
     public int maxHP;
     public int currentHP;
     public int level;
-    private bool isLive;
+    public bool isLive;
     public bool isHurt;
     [Header("Knockback Area Parameter")]
     public float knockbackRadius;   
@@ -55,6 +54,11 @@ public class Player : MonoBehaviour
         else
         {
             SetDefaultCursor();
+        }
+
+        if(currentHP <= 0)
+        {
+            Settlement();
         }
     }
     private void FixedUpdate()
@@ -92,19 +96,13 @@ public class Player : MonoBehaviour
                    
 
                 }
-                if (currentHP <= 0)
-                {
-                    currentHP = 0;
-                    isLive = false;
-                    Settlement();
-                }// ´ýÐ´ËÀÍöÌõ¼þ
             }
         }
 
         if(collision.CompareTag("Exp"))
         {
             GetExp();
-            collision.gameObject.SetActive(false);
+            collision.GetComponent<ExpLoot>().Disapper();
         }
 
     }
@@ -152,19 +150,19 @@ public class Player : MonoBehaviour
     }
     public void GetExp()
     {
-        currentExp += 5;
+        currentExp+=10;
         if (currentExp >= maxExp)
         {
             level++;
-            maxExp += maxExp*0.8f;
-            currentExp = 0;
+            currentExp -= maxExp;
+            maxExp += maxExp*0.5f;
             GameManager.instance.levelUpSystem.Show();
         }
 
     }
 
 
-    private void KnockbackNearbyEnemies() //Knock back nearby enemies when taking damage
+    public void KnockbackNearbyEnemies() //Knock back nearby enemies when taking damage
     {
         Collider2D[] nearByEnemies = Physics2D.OverlapCircleAll(transform.position, knockbackRadius, enemyLayer);
         foreach (Collider2D enemyCollider in nearByEnemies)
@@ -196,7 +194,7 @@ public class Player : MonoBehaviour
 
     public void Settlement()
     {
-        settlement.SetActive(true);
+        GameManager.instance.settlement.SetActive(true);
         GameManager.instance.Stop();
     }
 }

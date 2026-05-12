@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Explosion : MonoBehaviour
+public class BulletExplosion : MonoBehaviour
 {
-    private Animator animator;
+    protected Animator animator;
 
 
     private void Awake()
@@ -13,12 +13,12 @@ public class Explosion : MonoBehaviour
     }
 
     // Update is called once per frame
-    private void Update()
+    protected virtual void Update()
     {
         ExplosionAnimation();
     }
 
-    private void ExplosionAnimation()
+    protected void ExplosionAnimation()
     {
        
         if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime>= 1)

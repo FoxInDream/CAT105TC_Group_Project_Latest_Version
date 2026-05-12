@@ -28,7 +28,7 @@ public class Bullet : MonoBehaviour
 
     public virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Enemy") || collision.CompareTag("EnemyBullet"))
+        if (collision.CompareTag("Enemy") || collision.CompareTag("EnemyBullet")||collision.CompareTag("Exploder"))
         {
             GameObject explosion = PoolManager.instance.Get(2);
             explosion.transform.position = transform.position;
