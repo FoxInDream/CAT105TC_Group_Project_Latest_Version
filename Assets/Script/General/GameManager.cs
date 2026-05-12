@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public Rifle rifle;
     public LevelUpSystem levelUpSystem;
     public Spawner spawner;
+    public GameObject settlement;
     public Pause pause;
     public static GameManager instance;
     //Static members can be accessed from other scripts without creating an instance.

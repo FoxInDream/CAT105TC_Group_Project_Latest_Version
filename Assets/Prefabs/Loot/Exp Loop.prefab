@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7034221796082321943}
   - component: {fileID: 3056963301219822221}
   - component: {fileID: 1425574646216491868}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Exp Loop
   m_TagString: Exp
   m_Icon: {fileID: 0}

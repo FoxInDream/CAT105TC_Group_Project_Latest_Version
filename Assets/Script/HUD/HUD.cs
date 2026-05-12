@@ -31,7 +31,7 @@ public class HUD : MonoBehaviour
     }
     private void OnEnable()
     {
-        lifeTimer = 1f;
+        lifeTimer = 0.9f;
     }
     private void LateUpdate()
     {

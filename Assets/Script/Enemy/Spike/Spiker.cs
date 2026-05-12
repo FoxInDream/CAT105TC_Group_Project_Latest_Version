@@ -38,6 +38,18 @@ public class Spiker : Goblin
                 GameManager.instance.spawner.spikerCount--;
                 GameManager.instance.kill++;
             }
+            GameObject damageNumber = PoolManager.instance.Get(9);
+            damageNumber.transform.SetParent(transform);
+            damageNumber.transform.position = transform.position;
+            damageNumber.GetComponent<HUD>().damageNumber = collision.GetComponent<Bullet>().damage;
+
+        }
+        if (collision.CompareTag("Explosion"))
+        {
+            GameObject damageNumber = PoolManager.instance.Get(9);
+            damageNumber.transform.SetParent(transform);
+            damageNumber.transform.position = transform.position;
+            damageNumber.GetComponent<HUD>().damageNumber = 999;
         }
     }
 

@@ -4,7 +4,7 @@ using System.ComponentModel;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
-[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Rigidbody2D),typeof(Animator))]
 public class Goblin : MonoBehaviour
 {
     //Goblin Monster System
@@ -16,11 +16,11 @@ public class Goblin : MonoBehaviour
     public int damage;
     protected float speed;
     public float currenthealth;
-    protected bool isLive;
+    public bool isLive;
     [Header("Transform")]
     protected Transform target;
     [Header("Components")]
-    protected Animator animator;
+    public Animator animator;
     public Rigidbody2D rb;
     protected SpriteRenderer spriteRenderer;
     protected KnockBack knockBack;
@@ -77,9 +77,14 @@ public class Goblin : MonoBehaviour
             damageNumber.transform.SetParent(transform);
             damageNumber.transform.position = transform.position;
             damageNumber.GetComponent<HUD>().damageNumber = collision.GetComponent<Bullet>().damage;
+        }
 
-
-
+        if(collision.CompareTag("Explosion"))
+        {
+            GameObject damageNumber = PoolManager.instance.Get(9);
+            damageNumber.transform.SetParent(transform);
+            damageNumber.transform.position = transform.position;
+            damageNumber.GetComponent<HUD>().damageNumber = 999;
         }
     }
 
@@ -104,12 +109,12 @@ public class Goblin : MonoBehaviour
         this.speed = speed;
         this.damage = damage;
     }
-    public void Dead()
+    public virtual void Dead()
     {
         gameObject.SetActive(false);
         spriteRenderer.color = Color.white;
     }
-    protected void SpawnExpLoot()
+    public void SpawnExpLoot()
     {
         GameObject lootExp = PoolManager.instance.Get(4);
         lootExp.transform.position= transform.position;
