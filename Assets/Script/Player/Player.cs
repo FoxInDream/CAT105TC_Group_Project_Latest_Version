@@ -66,7 +66,7 @@ public class Player : MonoBehaviour
         Move();
     }
 
-    public void OnTriggerEnter2D(Collider2D collision)
+    public void OnTriggerStay2D(Collider2D collision)
     {
 
         if (collision.CompareTag("Enemy")|| collision.CompareTag("EnemyBullet")) //damage detection
