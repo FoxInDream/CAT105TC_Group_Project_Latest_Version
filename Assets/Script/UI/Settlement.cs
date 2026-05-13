@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class Settlement : MonoBehaviour
 {
-    public Canvas retry;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +18,6 @@ public class Settlement : MonoBehaviour
     }
     public void OnClickBackToMainMenu()
     {
-        gameObject.SetActive(false);
         SceneManager.LoadScene("MainMenu");
     }
 }

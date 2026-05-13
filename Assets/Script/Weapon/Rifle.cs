@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class Rifle : MonoBehaviour
@@ -21,16 +22,13 @@ public class Rifle : MonoBehaviour
     private Transform shellPosition;
     private Animator animator;
 
-    public void Awake()
+    private void Awake()
     {
-            animator = GetComponent<Animator>();
-    }
-    private void Start()
-    {
+        animator = GetComponent<Animator>();
         muzzle = transform.Find("Muzzle");
         shellPosition = transform.Find("Shell");
-
     }
+
 
     private void OnEnable()
     {
@@ -38,8 +36,10 @@ public class Rifle : MonoBehaviour
     }
     private void Update()
     {
-        if(!GameManager.instance.isPauseOpen)
+        if(Time.timeScale !=0)
         Direction(); //Control the rotation direction of the gun
+
+        Disapper();
     }
 
     private void FixedUpdate()
@@ -69,7 +69,7 @@ public class Rifle : MonoBehaviour
         }
         if(Input.GetMouseButton(0))
         {
-            if(shootTimer <= 0)
+            if(shootTimer <= 0 && Time.timeScale != 0)
             {
                 Fire();
                 shootTimer = interval;
@@ -103,5 +103,13 @@ public class Rifle : MonoBehaviour
         }
 
         return isReload;
+    }
+
+    private void Disapper()
+    {
+        if(GameManager.instance.player.currentHP<=0)
+        {
+            animator.SetTrigger("Disapper");
+        }
     }
 }

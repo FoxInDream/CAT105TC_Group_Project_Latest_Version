@@ -46,25 +46,28 @@ public class Player : MonoBehaviour
     }
     public void Update()
     {
-        if (!GameManager.instance.isPauseOpen)
+        if (Time.timeScale != 0) //Switch back to default cursor when the game is paused
         {
             FlipByMouse();
-            SetCustomCursor();
+            SetCustomCursor();  
         }
         else
         {
             SetDefaultCursor();
         }
 
+
         if(currentHP <= 0)
         {
-            Settlement();
+            animator.SetTrigger("Dead");
         }
     }
     private void FixedUpdate()
     {
         Move();
     }
+
+
 
     public void OnTriggerStay2D(Collider2D collision)
     {
@@ -77,10 +80,10 @@ public class Player : MonoBehaviour
                 {
 
                     if (collision.CompareTag("Enemy"))
-                    currentHP -=collision.GetComponent<Goblin>().damage ;
+                    currentHP -=collision.GetComponent<Goblin>().damage ;  
 
                     if(collision.CompareTag("EnemyBullet"))
-                   currentHP -= (int)collision.GetComponent<Bullet>().damage ;
+                   currentHP -= (int)collision.GetComponent<Bullet>().damage ; 
 
 
                     isHurt = true;
@@ -91,15 +94,16 @@ public class Player : MonoBehaviour
                         currentHP = 0;
                         isLive = false;
                     }
-                    impulseSource.GenerateImpulse();
-                    KnockbackNearbyEnemies();
-                   
+                    impulseSource.GenerateImpulse(); //Vibrate When Damaged
+                    KnockbackNearbyEnemies(); //Knock Up Surrounding Enemies When Damaged
+
 
                 }
             }
         }
 
-        if(collision.CompareTag("Exp"))
+
+        if(collision.CompareTag("Exp")) 
         {
             GetExp();
             collision.GetComponent<ExpLoot>().Disapper();
@@ -144,13 +148,14 @@ public class Player : MonoBehaviour
         Cursor.SetCursor(cursorTexture, mousePoint, CursorMode.Auto);
     }
 
-    private void SetDefaultCursor()
+    private void SetDefaultCursor()//Set cursor to default
     {
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
     }
+
     public void GetExp()
     {
-        currentExp+=10;
+        currentExp+=5;
         if (currentExp >= maxExp)
         {
             level++;
@@ -192,9 +197,11 @@ public class Player : MonoBehaviour
         isHurt = false;
     }
 
-    public void Settlement()
-    {
-        GameManager.instance.settlement.SetActive(true);
+
+
+    public void Dead() //This method is attached to the last frame of the death animation.
+    { 
+        GameManager.instance.settlement.SetActive(true); //Switch to settlement screen upon death
         GameManager.instance.Stop();
     }
 }

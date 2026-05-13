@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class ExploderExplosion : BulletExplosion
 {
-    public float explosionRadius = 2f;
+    public float explosionRadius;
 
     protected override void Update()
     {
@@ -57,7 +57,6 @@ public class ExploderExplosion : BulletExplosion
                     {
                         GameManager.instance.player.currentHP = 0;
                         GameManager.instance.player.isLive = false;
-                        GameManager.instance.player.Settlement();
                     }
                     GameManager.instance.player.impulseSource.GenerateImpulse();
                     GameManager.instance.player.KnockbackNearbyEnemies();
@@ -67,5 +66,10 @@ public class ExploderExplosion : BulletExplosion
             }
 
         }
+    }
+
+    private void OnDrawGizmosSelected() //Draw Area Range
+    {
+        Gizmos.DrawWireSphere(transform.position, explosionRadius);
     }
 }

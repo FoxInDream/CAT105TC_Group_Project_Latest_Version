@@ -12,7 +12,8 @@ public class PlayerLevelBuff : MonoBehaviour
         DamagePlus,
         HeartPlus,
         FireRatePlus,
-        ReloadRatePlus
+        ReloadRatePlus,
+        RecoverFullHP
     }
 
 
@@ -58,6 +59,9 @@ public class PlayerLevelBuff : MonoBehaviour
                 GameManager.instance.rifle.maxReloadTime -= 0.2f;
                 level++;
                 break;
+            case BuffName.RecoverFullHP:
+                GameManager.instance.player.currentHP = GameManager.instance.player.maxHP;
+                break;
         }
 
 
@@ -74,6 +78,9 @@ public class PlayerLevelBuff : MonoBehaviour
                     isMax=true;
                 }
 
+                break;
+
+            case BuffName.RecoverFullHP:
                 break;
         }
 

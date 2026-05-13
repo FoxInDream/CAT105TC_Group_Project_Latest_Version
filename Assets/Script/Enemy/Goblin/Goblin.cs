@@ -8,6 +8,7 @@ using static UnityEngine.GraphicsBuffer;
 public class Goblin : MonoBehaviour
 {
     //Goblin Monster System
+    //This script is the parent class for all enemies.
 
     [Header("Move Parameter")]
     public Vector2 moveDirection;
