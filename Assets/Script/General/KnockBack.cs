@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class KnockBack : MonoBehaviour
 {
+    //This script is used to generate knockback effect.
     [Header("Components")]
     public Rigidbody2D rb;
     [Header("Knockback Parameter")]

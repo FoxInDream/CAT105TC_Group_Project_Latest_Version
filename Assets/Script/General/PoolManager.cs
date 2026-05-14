@@ -4,9 +4,22 @@ using UnityEngine;
 
 public class PoolManager : MonoBehaviour
 {
-    //欢迎来到对象池，该系统可以用于优化因瞬间销毁太多物体或者生成太多物体而造成的卡顿问题
+    //Welcome to the Object Pool system. It optimizes stuttering caused by spawning or destroying a large number of objects in an instant.
 
-    //注 0是子弹，1是弹壳，2是子弹爆炸效果，3是goblin，4是经验块,5是蝙蝠,6是地刺,7是飞行水母，8是水母的子弹,9是伤害显示UI,10是有伤害的爆炸.11是爆炸怪.
+    //Note
+    // 0: Bullet
+    // 1: Shell Casing
+    // 2: Bullet Explosion Effect
+    // 3: Goblin
+    // 4: Experience Orb
+    // 5: Bat
+    // 6: Tree Monster
+    // 7: Flying Jellyfish
+    // 8: Jellyfish Bullet
+    // 9: Damage Display UI
+    // 10: Damaging Explosion
+    // 11: Explosion Monster
+
     public GameObject[] prefabs;
     private List<GameObject>[] pools;
     public static PoolManager instance;   
@@ -19,7 +32,7 @@ public class PoolManager : MonoBehaviour
 
 
 
-        pools = new List<GameObject>[prefabs.Length]; //初始化对象池
+        pools = new List<GameObject>[prefabs.Length]; //Initialize Object Pool
 
         for (int index = 0; index < pools.Length; index++)
         {
@@ -30,7 +43,7 @@ public class PoolManager : MonoBehaviour
     {
         GameObject select = null;
 
-        foreach (GameObject item in pools[index]) //从对象池找相应的物体，有就直接激活，不需要在新生成了
+        foreach (GameObject item in pools[index]) //Get object from pool, activate if exists, avoid new instantiation
         {
             if (!item.activeSelf)
             {

@@ -88,7 +88,7 @@ public class Rifle : MonoBehaviour
         shell.transform.position = shellPosition.position;
     }
 
-    private bool Reload()
+    private bool Reload() //Calculate the reload duration
     {
         if(currentbulletNumber <= 0)
         {
@@ -105,7 +105,7 @@ public class Rifle : MonoBehaviour
         return isReload;
     }
 
-    private void Disapper()
+    private void Disapper() // Ensure it disappears along with the player when the player dies
     {
         if(GameManager.instance.player.currentHP<=0)
         {

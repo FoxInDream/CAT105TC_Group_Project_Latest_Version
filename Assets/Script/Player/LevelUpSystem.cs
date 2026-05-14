@@ -19,13 +19,13 @@ public class LevelUpSystem : MonoBehaviour
     {
         RandomBuff();
         rect.localScale = Vector3.one;
-        GameManager.instance.Stop();
+        GameManager.instance.Stop(); //Stop the game
     }
 
     public void Hide()
     {
         rect.localScale = Vector3.zero;
-        GameManager.instance.Resume();
+        GameManager.instance.Resume(); //Restore the game progress
     }
 
     private void RandomBuff()

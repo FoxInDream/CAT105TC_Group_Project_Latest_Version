@@ -8,6 +8,8 @@ public class ExpLoot : MonoBehaviour
     private Animator animator;
     private SpriteRenderer spriteRenderer;
 
+
+    //Dropped Experience Script
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -22,13 +24,13 @@ public class ExpLoot : MonoBehaviour
     {
         disapperTimer = 0;
     }
-    private void DisapperTimer()
+    private void DisapperTimer() //Countdown, trigger experience fade animation on timeout
     {
         disapperTimer += Time.deltaTime;
         animator.SetFloat("Disapper Time", disapperTimer);
     }
 
-    public void Disapper()
+    public void Disapper() // Attach the disappear method to the last frame of the experience orb's disappearance animation
     {
         gameObject.SetActive(false);
         spriteRenderer.color = new Color(1, 1, 1, 1);

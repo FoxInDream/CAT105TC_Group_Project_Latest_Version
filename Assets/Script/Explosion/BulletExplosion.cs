@@ -6,7 +6,7 @@ public class BulletExplosion : MonoBehaviour
 {
     protected Animator animator;
 
-
+    //Bullet Destroy Animation Controller
     private void Awake()
     {
         animator = GetComponent<Animator>();

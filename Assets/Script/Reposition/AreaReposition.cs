@@ -5,7 +5,7 @@ using UnityEngine;
 public class AreaReposition : MonoBehaviour
 {
     private float totalWidth;
-
+    // Map Reset System: Move map chunks by detecting player position
     private void Awake()
     {
         totalWidth = 3 *40;

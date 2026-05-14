@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+  
     public float speed;
     public float damage;
     private Rigidbody2D rb;
@@ -37,7 +38,7 @@ public class Bullet : MonoBehaviour
     }
 
 
-    public virtual void FarToDestory() 
+    public virtual void FarToDestory() // Bullet auto-destroys after traveling a certain distance from the player without hitting any target
     {
         float distanceX = Mathf.Abs(GameManager.instance.player.transform.position.x - transform.position.x);
         float distanceY = Mathf.Abs(GameManager.instance.player.transform.position.y - transform.position.y);

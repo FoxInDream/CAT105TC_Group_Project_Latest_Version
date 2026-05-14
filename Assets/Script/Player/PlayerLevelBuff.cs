@@ -42,30 +42,40 @@ public class PlayerLevelBuff : MonoBehaviour
                 GameManager.instance.rifle.isReload = false;
                 level++;
                 break;
+
+
             case BuffName.DamagePlus:
                 GameManager.instance.rifle.bulletDamage += 5;
                 level++;
                 break;
+
+
             case BuffName.HeartPlus:
                 GameManager.instance.player.maxHP += 1;
                 GameManager.instance.player.currentHP = GameManager.instance.player.maxHP;
                 level++;
                 break;
+
+
             case BuffName.FireRatePlus:
                 GameManager.instance.rifle.interval -= 0.1f;
                 level++;
                 break;
+
+
             case BuffName.ReloadRatePlus:
                 GameManager.instance.rifle.maxReloadTime -= 0.2f;
                 level++;
                 break;
+
+
             case BuffName.RecoverFullHP:
                 GameManager.instance.player.currentHP = GameManager.instance.player.maxHP;
                 break;
         }
 
 
-        switch (buffName)
+        switch (buffName) 
         {
             case BuffName.BulletPlus:
             case BuffName.DamagePlus:
@@ -80,7 +90,7 @@ public class PlayerLevelBuff : MonoBehaviour
 
                 break;
 
-            case BuffName.RecoverFullHP:
+            case BuffName.RecoverFullHP: //HP restoration has no level cap. After all skills are fully upgraded, the HP recovery upgrade buff remains selectable
                 break;
         }
 

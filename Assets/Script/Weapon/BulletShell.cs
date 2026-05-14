@@ -31,11 +31,12 @@ public class BulletShell : MonoBehaviour
     // Update is called once per frame
 
 
-    IEnumerator Stop() {
-        yield return new WaitForSeconds(stopTime);
+    IEnumerator Stop() //Make shell casings disappear automatically after being ejected for a period of time
+    {
+        yield return new WaitForSeconds(stopTime); 
         rb.velocity= Vector2.zero;
-        rb.gravityScale = 0;
-        while(spriteRenderer.color.a>0)
+        rb.gravityScale = 0; //Ensure ejected shell casings land on the map instead of falling out of bounds
+        while (spriteRenderer.color.a>0)
         {
             spriteRenderer.color=new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, spriteRenderer.color.a-fadeSpeed);
             yield return new WaitForFixedUpdate();

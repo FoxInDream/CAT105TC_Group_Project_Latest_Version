@@ -87,6 +87,8 @@ public class Player : MonoBehaviour
                         currentHP--;
                         collision.gameObject.SetActive(false);
                     }
+
+
                     isHurt = true;
                     animator.SetTrigger("Hurt");
 

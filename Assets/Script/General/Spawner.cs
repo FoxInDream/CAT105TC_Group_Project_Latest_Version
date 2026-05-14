@@ -48,6 +48,7 @@ public class Spawner : MonoBehaviour
     }
     private void Spawn() //Spawn Order Logic	
     {
+        //Time counter: spawn different monsters at different times
         spawnTimer1 += Time.deltaTime;
         spawnTimer2 += Time.deltaTime;
         spawnTimer3 += Time.deltaTime;
@@ -69,6 +70,7 @@ public class Spawner : MonoBehaviour
 
         switch (level)
         {
+            //Stage 1: Only Goblin monsters spawn
             case 1:
 
 
@@ -86,7 +88,7 @@ public class Spawner : MonoBehaviour
 
 
 
-
+            //Stage 2: Boost Goblin health, Reduce Goblin spawn interval
             case 2:
 
                 if (spawnTimer1 > 1.5)
@@ -102,7 +104,7 @@ public class Spawner : MonoBehaviour
 
 
 
-
+            // Stage 3: Add new Bat monsters, Reduce Goblin spawn interval
             case 3:
                 if (spawnTimer1 > 1)
                 {
@@ -126,7 +128,7 @@ public class Spawner : MonoBehaviour
 
 
 
-
+            // Stage 4: Boost HP of Bats and Goblins,Reduce Bats spawn interval
             case 4:
                 if (spawnTimer1 > 1)
                 {
@@ -139,7 +141,7 @@ public class Spawner : MonoBehaviour
                 if (spawnTimer2 > 10)
                 {
                     spawnTimer2 = 0;
-                    SpawnCluster((int)MonsterType.Bat, 15, 6, 1);//Parameter: Prefab Index, maxHealth, Speed, Damage
+                    SpawnCluster((int)MonsterType.Bat, 15, 6, 1);
                 }
                 break;
 
@@ -147,7 +149,7 @@ public class Spawner : MonoBehaviour
 
 
 
-
+            //Stage 5: Add ranged Jellyfish and boost Bats' movement speed,Reduce Bats spawn interval
             case 5:
                 if (spawnTimer1 > 1)
                 {
@@ -160,7 +162,7 @@ public class Spawner : MonoBehaviour
                 if (spawnTimer2 > 7)
                 {
                     spawnTimer2 = 0;
-                    SpawnCluster((int)MonsterType.Bat, 15, 7, 1);//Parameter: Prefab Index, maxHealth, Speed, Damage
+                    SpawnCluster((int)MonsterType.Bat, 15, 7, 1);
                 }
 
 
@@ -168,7 +170,7 @@ public class Spawner : MonoBehaviour
                 {
                     spawnTimer3 = 0;
                     GameObject jellyfish = PoolManager.instance.Get((int)MonsterType.FlotingJellyfish);
-                    jellyfish.GetComponent<Goblin>().Init(15, 3, 1); //Parameter:  maxHealth, Speed, Damage
+                    jellyfish.GetComponent<Goblin>().Init(15, 3, 1);
                     jellyfish.transform.position = SpawnPonit();
                 }
                 break;
@@ -176,7 +178,7 @@ public class Spawner : MonoBehaviour
 
 
 
-
+            //Stage 6: Increase Goblin movement speed, raise HP of Bats and Jellyfish,Reduce jellyfish spawn interval
             case 6:
                 if (spawnTimer1 > 1)
                 {
@@ -189,7 +191,7 @@ public class Spawner : MonoBehaviour
                 if (spawnTimer2 > 7)
                 {
                     spawnTimer2 = 0;
-                    SpawnCluster((int)MonsterType.Bat, 20, 7, 1);//Parameter: Prefab Index, maxHealth, Speed, Damage
+                    SpawnCluster((int)MonsterType.Bat, 20, 7, 1);
                 }
 
 
@@ -197,7 +199,7 @@ public class Spawner : MonoBehaviour
                 {
                     spawnTimer3 = 0;
                     GameObject jellyfish = PoolManager.instance.Get((int)MonsterType.FlotingJellyfish);
-                    jellyfish.GetComponent<Goblin>().Init(20, 3, 1); //Parameter:  maxHealth, Speed, Damage
+                    jellyfish.GetComponent<Goblin>().Init(20, 3, 1); 
                     jellyfish.transform.position = SpawnPonit();
                 }
 
@@ -207,7 +209,7 @@ public class Spawner : MonoBehaviour
 
 
 
-
+            //Stage 7: Add Tree Monster, Reduce Bats and jellyfish spawn interval
             case 7:
 
                 if (spawnTimer1 > 1)
@@ -221,7 +223,7 @@ public class Spawner : MonoBehaviour
                 if (spawnTimer2 > 6)
                 {
                     spawnTimer2 = 0;
-                    SpawnCluster((int)MonsterType.Bat, 20, 7, 1);//Parameter: Prefab Index, maxHealth, Speed, Damage
+                    SpawnCluster((int)MonsterType.Bat, 20, 7, 1);
 
                     if (treeMonsterCount <= 5)
                     {
@@ -236,7 +238,7 @@ public class Spawner : MonoBehaviour
                 {
                     spawnTimer3 = 0;
                     GameObject jellyfish = PoolManager.instance.Get((int)MonsterType.FlotingJellyfish);
-                    jellyfish.GetComponent<Goblin>().Init(20, 3, 1); //Parameter:  maxHealth, Speed, Damage
+                    jellyfish.GetComponent<Goblin>().Init(20, 3, 1); 
                     jellyfish.transform.position = SpawnPonit();
                 }
 
@@ -245,8 +247,8 @@ public class Spawner : MonoBehaviour
 
 
 
-
-            case 8:
+            //Stage 8: Add Explosion Monster and increase Tree Monster HP, Reduce Bats and jellyfish spawn interval
+            case 8: 
 
                 if (spawnTimer1 > 1)
                 {
@@ -259,7 +261,7 @@ public class Spawner : MonoBehaviour
                 if (spawnTimer2 > 5)
                 {
                     spawnTimer2 = 0;
-                    SpawnCluster((int)MonsterType.Bat, 20, 7, 1);//Parameter: Prefab Index, maxHealth, Speed, Damage
+                    SpawnCluster((int)MonsterType.Bat, 20, 7, 1);
 
                     if (treeMonsterCount <= 5)
                     {
@@ -274,7 +276,7 @@ public class Spawner : MonoBehaviour
                 {
                     spawnTimer3 = 0;
                     GameObject jellyfish = PoolManager.instance.Get((int)MonsterType.FlotingJellyfish);
-                    jellyfish.GetComponent<Goblin>().Init(20, 3, 1); //Parameter:  maxHealth, Speed, Damage
+                    jellyfish.GetComponent<Goblin>().Init(20, 3, 1); 
                     jellyfish.transform.position = SpawnPonit();
                 }
 
@@ -282,7 +284,7 @@ public class Spawner : MonoBehaviour
                 {
                     spawnTimer4 = 0;
                     GameObject exploder = PoolManager.instance.Get((int)MonsterType.Exploder);
-                    exploder.GetComponent<Goblin>().Init(15, 4, 0); //Parameter:  maxHealth, Speed, Damage
+                    exploder.GetComponent<Goblin>().Init(15, 4, 0); 
                     exploder.transform.position = SpawnPonit();
                 }
 
@@ -291,7 +293,7 @@ public class Spawner : MonoBehaviour
         }
     }
 
-    private Vector3 SpawnPonit()
+    private Vector3 SpawnPonit() // Calculate monster random spawn points around the camera
     {
         Vector3 spawnPoint = Vector3.zero;
         if (Random.Range(0f, 1f) > 0.5f)
@@ -323,7 +325,7 @@ public class Spawner : MonoBehaviour
 
 
 
-    private void SpawnCluster(int mosterPrefab, float maxHealth, float speed, int damage) //Batch spawn clustered Monster
+    private void SpawnCluster(int mosterPrefab, float maxHealth, float speed, int damage) //Batch spawn clustered Monster, Mainly used for Bat monsters
     {
         int waveCount = 25;
         Vector3 spawnPosition = SpawnPonit();
@@ -345,7 +347,7 @@ public class Spawner : MonoBehaviour
 
 
 
-    private Vector3 GetSafeSpawnPoint()
+    private Vector3 GetSafeSpawnPoint()//Mainly used for Tree Monster spawning, preventing them from spawning too close and affecting visual effects
     {
         while (true) 
         {

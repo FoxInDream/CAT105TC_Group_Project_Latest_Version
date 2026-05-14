@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MonsterRePosition : MonoBehaviour
 {
+    // Used to reset monsters that are too far away from the player
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("FlyEnemy"))
@@ -12,7 +14,7 @@ public class MonsterRePosition : MonoBehaviour
         }
         else if (collision.CompareTag("Enemy") || collision.CompareTag("Exploder") || collision.CompareTag("Static Enemy"))
         {
-            collision.transform.Translate(GameManager.instance.player.moveDirection * 28 + new Vector2(Random.Range(1f, -1f), Random.Range(1f, -1f)));
+            collision.transform.Translate(GameManager.instance.player.moveDirection * 28 + new Vector2(Random.Range(1f, -1f), Random.Range(1f, -1f))); // Move in front of the player's movement direction, just outside the camera view
         }
     }
 }

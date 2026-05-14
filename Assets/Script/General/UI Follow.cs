@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class UIFollow : MonoBehaviour
 {
+    //Solves the issue where the Reload Bar cannot stay fixed above the player, caused by the Virtual Camera moving with the player instead of being stationary.
     RectTransform rectTransform;
 
     private void Awake()
