@@ -11,14 +11,15 @@ public class Spawner : MonoBehaviour
     {
         Goblin = 3,
         Bat = 5,
-        Spiker = 6,
+        TreeMonster = 6,
         FlotingJellyfish = 7,
         Exploder=11
     }
 
 
-    [Header("Couter")]
-    public int spikerCount; //Calculates enemy count, stops spawning when reaching the limit
+    [Header("Variable")]
+    public int treeMonsterCount; //Calculates enemy count, stops spawning when reaching the limit
+    public int treeSafeRadius=6;
     [Header("Spawn Point")]
     private Transform maxSpawnPoint;
     private Transform minSpawnPoint;
@@ -222,12 +223,12 @@ public class Spawner : MonoBehaviour
                     spawnTimer2 = 0;
                     SpawnCluster((int)MonsterType.Bat, 20, 7, 1);//Parameter: Prefab Index, maxHealth, Speed, Damage
 
-                    if (spikerCount <= 10)
+                    if (treeMonsterCount <= 5)
                     {
-                        GameObject spiker = PoolManager.instance.Get((int)MonsterType.Spiker);
-                        spiker.GetComponent<Goblin>().Init(30, 0, 1);
-                        spiker.transform.position = SpawnPonit();
-                        spikerCount++;
+                        GameObject TreeMonster = PoolManager.instance.Get((int)MonsterType.TreeMonster);
+                        TreeMonster.GetComponent<Goblin>().Init(30, 0, 1);
+                        TreeMonster.transform.position = GetSafeSpawnPoint();
+                        treeMonsterCount++;
                     }
                 }
 
@@ -260,12 +261,12 @@ public class Spawner : MonoBehaviour
                     spawnTimer2 = 0;
                     SpawnCluster((int)MonsterType.Bat, 20, 7, 1);//Parameter: Prefab Index, maxHealth, Speed, Damage
 
-                    if (spikerCount <= 10)
+                    if (treeMonsterCount <= 5)
                     {
-                        GameObject spiker = PoolManager.instance.Get((int)MonsterType.Spiker);
-                        spiker.GetComponent<Goblin>().Init(40, 0, 1);
-                        spiker.transform.position = SpawnPonit();
-                        spikerCount++;
+                        GameObject TreeMonster = PoolManager.instance.Get((int)MonsterType.TreeMonster);
+                        TreeMonster.GetComponent<Goblin>().Init(40, 0, 1);
+                        TreeMonster.transform.position = GetSafeSpawnPoint();
+                        treeMonsterCount++;
                     }
                 }
 
@@ -340,6 +341,34 @@ public class Spawner : MonoBehaviour
             moster.GetComponent<Goblin>().moveDirection = (GameManager.instance.player.transform.position - moster.transform.position).normalized;
         }
 
+    }
+
+
+
+    private Vector3 GetSafeSpawnPoint()
+    {
+        while (true) 
+        {
+            Vector3 randomPos = SpawnPonit();
+
+
+            Collider2D[] hitColliders = Physics2D.OverlapCircleAll(randomPos, treeSafeRadius);
+            bool hasTreeMonster = false;
+
+            foreach (Collider2D col in hitColliders)
+            {
+                if (col.CompareTag("Static Enemy"))
+                {
+                    hasTreeMonster = true;
+                    break;
+                }
+            }
+
+            if (!hasTreeMonster)
+            {
+                return randomPos;
+            }
+        }
     }
 }
 

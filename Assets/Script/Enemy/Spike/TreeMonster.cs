@@ -2,21 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spiker : Goblin
+public class TreeMonster: Goblin
 {
+    public float timer = 0;
+    
     public override void FixedUpdate()
     {
-        Move();
     }
 
-    public override void Move()
+
+    public  void Update()
     {
-        moveDirection = (target.position - transform.position).normalized;
-        if (moveDirection.x > 0)
-            spriteRenderer.flipX = true;
-        if (moveDirection.x < 0)
-            spriteRenderer.flipX = false;
+        RevealItself();
     }
+
 
     public override void OnTriggerEnter2D(Collider2D collision)
     {
@@ -35,7 +34,7 @@ public class Spiker : Goblin
                 gameObject.layer = LayerMask.NameToLayer("DeadEnemy");
                 animator.SetTrigger("Dead");
                 SpawnExpLoot();
-                GameManager.instance.spawner.spikerCount--;
+                GameManager.instance.spawner.treeMonsterCount--;
                 GameManager.instance.kill++;
             }
             GameObject damageNumber = PoolManager.instance.Get(9);
@@ -53,4 +52,14 @@ public class Spiker : Goblin
         }
     }
 
+    private void RevealItself()
+    {
+        timer += Time.deltaTime;
+
+        if (timer >= 5)
+        {
+            animator.SetTrigger("Reveal");
+            timer= 0;
+        }
+    }
 }

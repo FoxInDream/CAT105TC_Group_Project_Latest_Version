@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FloatingJellyfish : Goblin
 {
+    //Unlike the parent class, this enemy stops within a certain range around the player and fires bullets toward them.
 
     public float stopDistance;
 

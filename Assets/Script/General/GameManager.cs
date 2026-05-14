@@ -62,14 +62,22 @@ public class GameManager : MonoBehaviour
     {
         GameObject[] allEnemies = GameObject.FindGameObjectsWithTag("Enemy");
         GameObject[] allExploder = GameObject.FindGameObjectsWithTag("Exploder");
+        GameObject[] allStaticEnemy = GameObject.FindGameObjectsWithTag("Static Enemy");
         foreach (GameObject enemy in allEnemies)
         {
             enemy.GetComponent<Animator>().SetTrigger("Dead");
         }
+
         foreach(GameObject Exploder in allExploder)
         {
             Exploder.GetComponent<Exploder>().Dead();
         }
+
+        foreach (GameObject Exploder in allStaticEnemy)
+        {
+            Exploder.GetComponent<Animator>().SetTrigger("Dead");
+        }
     }
+
 
 }

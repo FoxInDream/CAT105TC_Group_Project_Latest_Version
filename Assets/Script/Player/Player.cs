@@ -72,7 +72,7 @@ public class Player : MonoBehaviour
     public void OnTriggerStay2D(Collider2D collision)
     {
 
-        if (collision.CompareTag("Enemy")|| collision.CompareTag("EnemyBullet")) //damage detection
+        if (collision.CompareTag("Enemy")|| collision.CompareTag("EnemyBullet") || collision.CompareTag("Static Enemy")) //damage detection
         {
             if (!isHurt)
             {
@@ -80,12 +80,13 @@ public class Player : MonoBehaviour
                 {
 
                     if (collision.CompareTag("Enemy"))
-                    currentHP -=collision.GetComponent<Goblin>().damage ;  
+                    currentHP -=collision.GetComponent<Goblin>().damage ;
 
-                    if(collision.CompareTag("EnemyBullet"))
-                   currentHP -= (int)collision.GetComponent<Bullet>().damage ; 
-
-
+                    if (collision.CompareTag("EnemyBullet"))
+                    {
+                        currentHP--;
+                        collision.gameObject.SetActive(false);
+                    }
                     isHurt = true;
                     animator.SetTrigger("Hurt");
 

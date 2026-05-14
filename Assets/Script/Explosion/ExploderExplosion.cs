@@ -25,12 +25,15 @@ public class ExploderExplosion : BulletExplosion
         foreach (Collider2D col in colliders)
         {
           
-            if (col.CompareTag("Enemy")|| col.CompareTag("Exploder"))
+            if (col.CompareTag("Enemy")|| col.CompareTag("Exploder") ||col.CompareTag("Static Enemy"))
             {
                 if (col.GetComponent<Goblin>().isLive)
                 {
                     col.GetComponent<Goblin>().isLive = false;
                     col.GetComponent<Goblin>().gameObject.layer = LayerMask.NameToLayer("DeadEnemy");
+
+
+                    if(col.CompareTag("Enemy") || col.CompareTag("Exploder"))
                     col.GetComponent<Goblin>().rb.velocity = Vector2.zero;
 
                     if (col.CompareTag("Enemy"))

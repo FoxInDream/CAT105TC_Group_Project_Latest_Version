@@ -26,11 +26,11 @@ public class Bullet : MonoBehaviour
     }
 
 
-    public virtual void OnTriggerEnter2D(Collider2D collision)
+    public virtual void OnTriggerEnter2D(Collider2D collision) 
     {
-        if (collision.CompareTag("Enemy") || collision.CompareTag("EnemyBullet")||collision.CompareTag("Exploder"))
+        if (collision.CompareTag("Enemy") || collision.CompareTag("EnemyBullet")||collision.CompareTag("Exploder") || collision.CompareTag("Static Enemy"))
         {
-            GameObject explosion = PoolManager.instance.Get(2);
+            GameObject explosion = PoolManager.instance.Get(2); //It will trigger a destroy effect upon colliding with monsters.
             explosion.transform.position = transform.position;
             gameObject.SetActive(false);
         }

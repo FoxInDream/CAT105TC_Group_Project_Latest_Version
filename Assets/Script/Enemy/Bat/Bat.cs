@@ -8,7 +8,10 @@ public class Bat : Goblin
 {
     public override void OnEnable()
     {
-        gameObject.layer = LayerMask.NameToLayer("FlyEnemy");
+        //The biggest difference from the parent class is that it does not need to continuously track the player¡¯s position. It only flies towards the player¡¯s direction when spawned, instead of chasing the player.
+        gameObject.layer = LayerMask.NameToLayer("FlyEnemy");  
+        target = GameManager.instance.player.transform;
+        moveDirection = (target.position - transform.position).normalized;  
         isLive = true;
 
     }

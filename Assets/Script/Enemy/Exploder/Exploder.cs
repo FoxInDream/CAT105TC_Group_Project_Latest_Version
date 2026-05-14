@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Exploder : Goblin
 {
+
+    //Unlike the parent class, this enemy does not play a death animation. Instead, it creates an explosion upon death.
     public override void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Bullet"))

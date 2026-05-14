@@ -10,8 +10,7 @@ public class MonsterRePosition : MonoBehaviour
         {
             collision.gameObject.SetActive(false);
         }
-
-        if (collision.CompareTag("Enemy"))
+        else if (collision.CompareTag("Enemy") || collision.CompareTag("Exploder") || collision.CompareTag("Static Enemy"))
         {
             collision.transform.Translate(GameManager.instance.player.moveDirection * 28 + new Vector2(Random.Range(1f, -1f), Random.Range(1f, -1f)));
         }

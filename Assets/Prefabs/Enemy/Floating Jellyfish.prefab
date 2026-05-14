@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 7833342327743981915}
   - component: {fileID: 520371130907906252}
   - component: {fileID: 1814189717080622432}
-  - component: {fileID: 5435220654989395442}
   - component: {fileID: 8323518794793100779}
   m_Layer: 6
   m_Name: Floating Jellyfish
@@ -153,6 +152,8 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0}
   damage: 0
   currenthealth: 0
+  isLive: 0
+  animator: {fileID: 0}
   rb: {fileID: 0}
   stopDistance: 6
   FireRate: 1
@@ -170,41 +171,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   isKnockedBack: 0
---- !u!58 &5435220654989395442
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8710229592228422794}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.51734054, y: -1.8306277}
-  serializedVersion: 2
-  m_Radius: 5.8112106
 --- !u!58 &8323518794793100779
 CircleCollider2D:
   m_ObjectHideFlags: 0
