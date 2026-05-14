@@ -24,9 +24,8 @@ public class Exploder : Goblin
                 isLive = false;
                 gameObject.layer = LayerMask.NameToLayer("DeadEnemy");
                 rb.velocity = Vector2.zero;
-                Dead();
                 SpawnExpLoot();
-                GameManager.instance.kill++;
+                Dead();
             }
             GameObject damageNumber = PoolManager.instance.Get(9);
             damageNumber.transform.SetParent(transform);
@@ -39,14 +38,14 @@ public class Exploder : Goblin
             isLive = false;
             gameObject.layer = LayerMask.NameToLayer("DeadEnemy");
             rb.velocity = Vector2.zero;
-            Dead();
             SpawnExpLoot();
-            GameManager.instance.kill++;
+            Dead();
         }
     }
 
     public override void Dead()
     {
+
         base.Dead();
         GameObject Explosion = PoolManager.instance.Get(10);
         Explosion.transform.position = transform.position;

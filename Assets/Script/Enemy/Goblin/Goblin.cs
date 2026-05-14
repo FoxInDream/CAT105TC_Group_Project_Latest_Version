@@ -36,7 +36,7 @@ public class Goblin : MonoBehaviour
 
     public virtual void OnEnable()
     {
-        gameObject.layer = LayerMask.NameToLayer("GroundEnemy");
+        gameObject.layer = LayerMask.NameToLayer("GroundEnemy"); //Reset monster layer on respawn to resume collision and interaction with other objects.
         target = GameManager.instance.player.transform;
         isLive = true;
        
@@ -61,26 +61,29 @@ public class Goblin : MonoBehaviour
 
                 rb.velocity = Vector2.zero;
                 animator.SetTrigger("Hurt");
+                //Make the enemy receive knockback when attacked by the player.
                 Vector3 playerPosition = GameManager.instance.player.transform.position;
-                Vector2 knockbackDirection = (transform.position - playerPosition).normalized;
+                Vector2 knockbackDirection = (transform.position - playerPosition).normalized; 
                 knockBack.KnockBackTrigger(knockbackDirection,1);
             }
             else
             {
                 isLive = false;
-                gameObject.layer = LayerMask.NameToLayer("DeadEnemy");
+                gameObject.layer = LayerMask.NameToLayer("DeadEnemy"); //Switch to dead enemy layer upon death to avoid collision detection with certain objects.
                 rb.velocity = Vector2.zero;
-                animator.SetTrigger("Dead");
                 SpawnExpLoot();
-                GameManager.instance.kill++;
+                animator.SetTrigger("Dead"); //Increase player kill count
             }
+
+
+            //Display incoming damage value
             GameObject damageNumber = PoolManager.instance.Get(9);
             damageNumber.transform.SetParent(transform);
             damageNumber.transform.position = transform.position;
             damageNumber.GetComponent<HUD>().damageNumber = collision.GetComponent<Bullet>().damage;
         }
 
-        if(collision.CompareTag("Explosion"))
+        if(collision.CompareTag("Explosion"))//Take explosion damage from explosive enemies, die instantly, and display 999 damage taken.
         {
             GameObject damageNumber = PoolManager.instance.Get(9);
             damageNumber.transform.SetParent(transform);
@@ -104,18 +107,21 @@ public class Goblin : MonoBehaviour
 
 
 
-    public void Init(float maxHealth,float speed,int damage)
+    public void Init(float maxHealth,float speed,int damage)//Initialize the enemy; called when spawning the enemy.
     {
         currenthealth = maxHealth;
         this.speed = speed;
         this.damage = damage;
     }
-    public virtual void Dead()
+    public virtual void Dead() //Restore the enemy's color values on death to fix color display bugs when respawning.
     {
+        GameManager.instance.kill++; //Increase player kill count
         gameObject.SetActive(false);
         spriteRenderer.color = Color.white;
     }
-    public void SpawnExpLoot()
+
+
+    public void SpawnExpLoot() //Drop EXP
     {
         GameObject lootExp = PoolManager.instance.Get(4);
         lootExp.transform.position= transform.position;
