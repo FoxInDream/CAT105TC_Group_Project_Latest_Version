@@ -78,7 +78,7 @@ public class Player : MonoBehaviour
                 if (currentHP > 0)
                 {
 
-                    if (collision.CompareTag("Enemy"))
+                    if (collision.CompareTag("Enemy")|| collision.CompareTag("Static Enemy"))
                     currentHP -=collision.GetComponent<Goblin>().damage ;
 
                     if (collision.CompareTag("EnemyBullet"))
