@@ -10,7 +10,7 @@ public class Pause : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        setting.gameObject.SetActive(false);
     }
 
     // Update is called once per frame

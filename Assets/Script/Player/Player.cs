@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         impulseSource=GetComponent<CinemachineImpulseSource>();
-
+        isLive=true;
     }
 
     public void OnEnable()
