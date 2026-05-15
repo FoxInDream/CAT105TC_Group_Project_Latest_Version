@@ -8,6 +8,7 @@ public class SelectRoleButton : MonoBehaviour
 {
     public Button startButton;
     public Image hint;
+    public Canvas MainMenu;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,7 +40,7 @@ public class SelectRoleButton : MonoBehaviour
         }
     } 
     public void StartGame()
-    {
+    {        
         SceneManager.LoadScene("PlayScene");
     }
 }

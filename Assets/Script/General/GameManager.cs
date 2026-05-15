@@ -17,12 +17,14 @@ public class GameManager : MonoBehaviour
     [Header("Variables")]
     public int kill;
     public float timer;
-    public bool isPauseOpen;
+    public bool isPauseOpen = false;
     private void Awake()
     {
         kill = 0;
         timer = 300;
-        instance = this; 
+        instance = this;
+        Time.timeScale = 1;
+        isPauseOpen = false;
     }
     private void Update()
     {
@@ -33,7 +35,7 @@ public class GameManager : MonoBehaviour
             KillAllEnemies();
         }
 
-        if(Input.GetKeyDown(KeyCode.Escape)&& isPauseOpen)
+        if(Input.GetKeyDown(KeyCode.Escape)&& isPauseOpen == true)
         {
             pause.OnResumeGame();
         }

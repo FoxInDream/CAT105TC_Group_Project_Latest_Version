@@ -32,7 +32,6 @@ public class Player : MonoBehaviour
 
     public void Awake()
     {
-
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
