@@ -2598,7 +2598,7 @@ MonoBehaviour:
   isPlayingAnim: 0
   originRightToLeft: 0
   originLeftToRight: 0
-  nextLeftToRight: 0
+  nextLeftToRight: 1
   nextRightToLeft: 0
 --- !u!114 &1019677906
 MonoBehaviour:

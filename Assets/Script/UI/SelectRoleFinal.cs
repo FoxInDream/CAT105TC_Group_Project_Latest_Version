@@ -29,6 +29,7 @@ public class SelectRoleFinal : MonoBehaviour
         HideAll();
         roleDraw[currentRoleIndex].gameObject.SetActive(true);
         roleShadow[currentRoleIndex].gameObject.SetActive(true);
+        isPlayingAnim = false;
     }
 
     private void Update()
