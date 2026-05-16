@@ -69179,7 +69179,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5931434}
         m_TargetAssemblyTypeName: Pause, Assembly-CSharp
-        m_MethodName: OnClickClosePause
+        m_MethodName: OnResumeGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -86055,6 +86055,7 @@ MonoBehaviour:
   spawner: {fileID: 104379849}
   settlement: {fileID: 71431624}
   pause: {fileID: 5931434}
+  setting: {fileID: 1768904077}
   kill: 0
   timer: 0
   isPauseOpen: 0
@@ -138497,7 +138498,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: You Died
+  m_Text: You Die
 --- !u!222 &1898442372
 CanvasRenderer:
   m_ObjectHideFlags: 0

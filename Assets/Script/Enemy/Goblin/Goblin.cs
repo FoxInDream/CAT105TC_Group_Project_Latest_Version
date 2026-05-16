@@ -72,7 +72,8 @@ public class Goblin : MonoBehaviour
                 gameObject.layer = LayerMask.NameToLayer("DeadEnemy"); //Switch to dead enemy layer upon death to avoid collision detection with certain objects.
                 rb.velocity = Vector2.zero;
                 SpawnExpLoot();
-                animator.SetTrigger("Dead"); //Increase player kill count
+                GameManager.instance.kill++; //Increase player kill count
+                animator.SetTrigger("Dead");
             }
 
 
@@ -115,7 +116,6 @@ public class Goblin : MonoBehaviour
     }
     public virtual void Dead() //Restore the enemy's color values on death to fix color display bugs when respawning.
     {
-        GameManager.instance.kill++; //Increase player kill count
         gameObject.SetActive(false);
         spriteRenderer.color = Color.white;
     }

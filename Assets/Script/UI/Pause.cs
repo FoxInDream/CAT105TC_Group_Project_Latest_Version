@@ -8,10 +8,8 @@ public class Pause : MonoBehaviour
 {
     public GameObject setting;
     // Start is called before the first frame update
-    void Start()
-    {
-        setting.gameObject.SetActive(false);
-    }
+
+
 
     // Update is called once per frame
     void Update()
@@ -28,14 +26,10 @@ public class Pause : MonoBehaviour
         GameManager.instance.Resume();
     }
 
-    public void OnClickClosePause()
-    {
-        gameObject.SetActive(false);
-    }
     public void OnClickOpenSetting()
     {
+        setting.SetActive(true);
         gameObject.SetActive(false);
-        setting.gameObject.SetActive(true);
     }
     public void OnClickQuitGame()
     {

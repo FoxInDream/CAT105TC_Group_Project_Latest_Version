@@ -58,6 +58,7 @@ public class Player : MonoBehaviour
 
         if(currentHP <= 0)
         {
+            GameManager.instance.rifle.animator.SetTrigger("Disapper");
             animator.SetTrigger("Dead");
         }
     }
@@ -202,8 +203,8 @@ public class Player : MonoBehaviour
 
 
     public void Dead() //This method is attached to the last frame of the death animation.
-    { 
-        GameManager.instance.settlement.SetActive(true); //Switch to settlement screen upon death
+    {
+        GameManager.instance.settlement.GetComponent<Settlement>().LoseTheGame(); //Switch to settlement screen upon death
         GameManager.instance.Stop();
     }
 }

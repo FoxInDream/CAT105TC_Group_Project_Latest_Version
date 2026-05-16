@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -12,19 +13,19 @@ public class GameManager : MonoBehaviour
     public Spawner spawner;
     public GameObject settlement;
     public Pause pause;
+    public Setting setting;
     public static GameManager instance;
     //Static members can be accessed from other scripts without creating an instance.
     [Header("Variables")]
     public int kill;
     public float timer;
-    public bool isPauseOpen = false;
+    public bool isPauseOpen;
     private void Awake()
     {
         kill = 0;
         timer = 300;
         instance = this;
         Time.timeScale = 1;
-        isPauseOpen = false;
     }
     private void Update()
     {
@@ -33,11 +34,14 @@ public class GameManager : MonoBehaviour
         {
             timer = 0;
             KillAllEnemies();
+            StartCoroutine(Victory());
+
         }
 
         if(Input.GetKeyDown(KeyCode.Escape)&& isPauseOpen == true)
         {
             pause.OnResumeGame();
+            setting.gameObject.SetActive(false);
         }
         else if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -65,21 +69,37 @@ public class GameManager : MonoBehaviour
         GameObject[] allEnemies = GameObject.FindGameObjectsWithTag("Enemy");
         GameObject[] allExploder = GameObject.FindGameObjectsWithTag("Exploder");
         GameObject[] allStaticEnemy = GameObject.FindGameObjectsWithTag("Static Enemy");
+        GameObject[] allEnemyBullet = GameObject.FindGameObjectsWithTag("EnemyBullet");
         foreach (GameObject enemy in allEnemies)
         {
             enemy.GetComponent<Animator>().SetTrigger("Dead");
+            enemy.layer = LayerMask.NameToLayer("DeadEnemy");
         }
 
-        foreach(GameObject Exploder in allExploder)
+        foreach(GameObject exploder in allExploder)
         {
-            Exploder.GetComponent<Exploder>().Dead();
+            exploder.GetComponent<Exploder>().Dead();
+            exploder.layer = LayerMask.NameToLayer("DeadEnemy");
         }
 
-        foreach (GameObject Exploder in allStaticEnemy)
+        foreach (GameObject staticEnemy in allStaticEnemy)
         {
-            Exploder.GetComponent<Animator>().SetTrigger("Dead");
+            staticEnemy.GetComponent<Animator>().SetTrigger("Dead");
+            staticEnemy.layer = LayerMask.NameToLayer("DeadEnemy");
+
+        }
+        foreach(GameObject enemyBullet in allEnemyBullet)
+        {
+            enemyBullet.gameObject.SetActive(false);
         }
     }
 
+    IEnumerator Victory() //Make shell casings disappear automatically after being ejected for a period of time
+    {
+        yield return new WaitForSeconds(1.5f);
+        GameManager.instance.settlement.GetComponent<Settlement>().WinTheGame();
+        Stop();
+
+    }
 
 }

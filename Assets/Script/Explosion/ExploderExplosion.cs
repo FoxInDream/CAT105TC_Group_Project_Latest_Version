@@ -38,6 +38,8 @@ public class ExploderExplosion : BulletExplosion
 
                     if (col.CompareTag("Enemy"))
                         col.GetComponent<Goblin>().animator.SetTrigger("Dead");
+
+
                     if (col.CompareTag("Exploder"))
                         col.GetComponent<Goblin>().Dead();
 

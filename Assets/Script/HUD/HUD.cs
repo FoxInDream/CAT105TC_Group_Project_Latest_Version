@@ -107,16 +107,11 @@ public class HUD : MonoBehaviour
                     transform.SetParent(poolManager.transform);
                 }
                 break;
+
+
             case InfomationType.Score:
-                if (GameManager.instance != null && GameManager.instance.player != null)
-                {
-                    int score = GameManager.instance.kill + GameManager.instance.player.level*1000;
+                    int score = GameManager.instance.kill + ((GameManager.instance.player.level-1)*100);
                     uiText.text = string.Format("{0}", score);
-                }
-                else
-                {
-                    uiText.text = "0"; 
-                }
                 break;
 
         }

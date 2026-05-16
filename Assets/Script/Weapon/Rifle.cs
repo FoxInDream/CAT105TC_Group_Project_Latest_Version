@@ -17,9 +17,9 @@ public class Rifle : MonoBehaviour
     [Header("Components")]
     public GameObject bulletPrefab;
     public GameObject shellPrefab;
+    public Animator animator;
     private Transform muzzle;
     private Transform shellPosition;
-    private Animator animator;
 
     private void Awake()
     {
@@ -38,7 +38,6 @@ public class Rifle : MonoBehaviour
         if(Time.timeScale !=0)
         Direction(); //Control the rotation direction of the gun
 
-        Disapper();
     }
 
     private void FixedUpdate()
@@ -104,11 +103,5 @@ public class Rifle : MonoBehaviour
         return isReload;
     }
 
-    private void Disapper() // Ensure it disappears along with the player when the player dies
-    {
-        if(GameManager.instance.player.currentHP<=0)
-        {
-            animator.SetTrigger("Disapper");
-        }
-    }
+
 }

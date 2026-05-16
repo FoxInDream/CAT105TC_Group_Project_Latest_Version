@@ -13,26 +13,22 @@ public class Settlement : MonoBehaviour
     void Start()
     {
         instance=this;
-        gameObject.SetActive(false);
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
     public void OnClickBackToMainMenu()
     {
         SceneManager.LoadScene("MainMenu");
     }
     public void LoseTheGame()
     {
-        loseText.gameObject.SetActive(true);
         gameObject.SetActive(true);
+        winText.gameObject.SetActive(false);
     }
     public void WinTheGame()
     {
-        winText.gameObject.SetActive(true);
         gameObject.SetActive(true);
+        loseText.gameObject.SetActive(false);
     }
 }

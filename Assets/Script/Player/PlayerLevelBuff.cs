@@ -52,7 +52,6 @@ public class PlayerLevelBuff : MonoBehaviour
 
             case BuffName.HeartPlus:
                 GameManager.instance.player.maxHP += 1;
-                GameManager.instance.player.currentHP = GameManager.instance.player.maxHP;
                 level++;
                 break;
 

@@ -26,6 +26,7 @@ public class Exploder : Goblin
                 isLive = false;
                 gameObject.layer = LayerMask.NameToLayer("DeadEnemy");
                 rb.velocity = Vector2.zero;
+                GameManager.instance.kill++; //Increase player kill count
                 SpawnExpLoot();
                 Dead();
             }
