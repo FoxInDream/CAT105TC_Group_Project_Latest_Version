@@ -6,17 +6,23 @@ using UnityEngine.UI;
 
 public class Settlement : MonoBehaviour
 {
-    public static Settlement instance;
     public Text loseText;
     public Text winText;
     // Start is called before the first frame update
     void Start()
     {
-        instance=this;
+
     }
 
     // Update is called once per frame
 
+    private void Update()
+    {
+        if (loseText != null)
+        {
+
+        }
+    }
     public void OnClickBackToMainMenu()
     {
         SceneManager.LoadScene("MainMenu");

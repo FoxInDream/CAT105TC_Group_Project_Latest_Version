@@ -2595,10 +2595,11 @@ MonoBehaviour:
   - {fileID: 326699696}
   - {fileID: 2115581061}
   moveSpeed: 20
+  currentRoleIndex: 0
   isPlayingAnim: 0
   originRightToLeft: 0
   originLeftToRight: 0
-  nextLeftToRight: 1
+  nextLeftToRight: 0
   nextRightToLeft: 0
 --- !u!114 &1019677906
 MonoBehaviour:
@@ -2615,6 +2616,7 @@ MonoBehaviour:
   startButton: {fileID: 89558405}
   hint: {fileID: 1562983681}
   MainMenu: {fileID: 333718410}
+  selectRoleFinal: {fileID: 1019677905}
 --- !u!1 &1080721152
 GameObject:
   m_ObjectHideFlags: 0

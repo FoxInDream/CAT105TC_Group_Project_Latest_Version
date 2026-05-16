@@ -16,7 +16,7 @@ public class SelectRoleFinal : MonoBehaviour
 
     public float moveSpeed;
 
-    public static int currentRoleIndex = 0;
+    public static int currentRoleIndex;
     public bool isPlayingAnim = false;
     public bool originRightToLeft = false;
     public bool originLeftToRight = false;
@@ -25,12 +25,17 @@ public class SelectRoleFinal : MonoBehaviour
 
     private void Start()
     {
+        
+        currentRoleIndex = 0;
         moveSpeed = 20f;
         HideAll();
-        roleDraw[currentRoleIndex].gameObject.SetActive(true);
-        roleShadow[currentRoleIndex].gameObject.SetActive(true);
+        Show();
         isPlayingAnim = false;
-    }
+        originRightToLeft = false;
+        originLeftToRight = false;
+        nextLeftToRight = false;
+        nextRightToLeft = false;
+}
 
     private void Update()
     {

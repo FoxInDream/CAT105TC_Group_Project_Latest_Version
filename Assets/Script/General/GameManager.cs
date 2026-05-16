@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
             timer = 0;
             KillAllEnemies();
             StartCoroutine(Victory());
-
+    
         }
 
         if(Input.GetKeyDown(KeyCode.Escape)&& isPauseOpen == true)

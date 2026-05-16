@@ -9,6 +9,7 @@ public class SelectRoleButton : MonoBehaviour
     public Button startButton;
     public Image hint;
     public Canvas MainMenu;
+    public SelectRoleFinal selectRoleFinal;
     // Start is called before the first frame update
     void Start()
     {
