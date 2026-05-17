@@ -8,7 +8,7 @@ public class Instruction : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        timer = 30;
+        timer = 10;
     }
 
     // Update is called once per frame
