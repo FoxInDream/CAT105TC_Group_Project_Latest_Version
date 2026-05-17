@@ -163,7 +163,7 @@ public class Player : MonoBehaviour
         {
             level++;
             currentExp -= maxExp;
-            maxExp += maxExp*0.5f;
+            maxExp += maxExp*0.27f;
             GameManager.instance.levelUpSystem.Show();
         }
 

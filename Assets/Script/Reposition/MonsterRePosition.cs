@@ -14,7 +14,8 @@ public class MonsterRePosition : MonoBehaviour
         }
         else if (collision.CompareTag("Enemy") || collision.CompareTag("Exploder") || collision.CompareTag("Static Enemy"))
         {
-            collision.transform.Translate(GameManager.instance.player.moveDirection * 28 + new Vector2(Random.Range(1f, -1f), Random.Range(1f, -1f))); // Move in front of the player's movement direction, just outside the camera view
+            Vector2 transformDirection=(GameManager.instance.player.transform.position-collision.transform.position).normalized;
+            collision.transform.Translate(transformDirection * 28 + new Vector2(Random.Range(1f, -1f), Random.Range(1f, -1f))); // Move in front of the player's movement direction, just outside the camera view
         }
     }
 }
