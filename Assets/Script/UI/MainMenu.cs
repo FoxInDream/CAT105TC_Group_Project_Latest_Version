@@ -10,6 +10,7 @@ public class MainMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = 1;
         gameObject.SetActive(true);
         setting.gameObject.SetActive(false);
         selectRole.gameObject.SetActive(false);
