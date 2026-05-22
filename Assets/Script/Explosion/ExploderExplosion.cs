@@ -36,7 +36,7 @@ public class ExploderExplosion : BulletExplosion
                     if(col.CompareTag("Enemy") || col.CompareTag("Exploder"))
                     col.GetComponent<Goblin>().rb.velocity = Vector2.zero;
 
-                    if (col.CompareTag("Enemy"))
+                    if (col.CompareTag("Enemy") || col.CompareTag("Static Enemy"))
                         col.GetComponent<Goblin>().animator.SetTrigger("Dead");
 
 
