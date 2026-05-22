@@ -38,19 +38,22 @@ public class GameManager : MonoBehaviour
     
         }
 
-        if(Input.GetKeyDown(KeyCode.Escape)&& isPauseOpen == true)
+        if (Input.GetKeyDown(KeyCode.Escape)&&player.isLive!=false)
         {
-            pause.OnResumeGame();
-            setting.gameObject.SetActive(false);
+            if (!isPauseOpen)
+            {
+                pause.OpenPausePanel();
+            }
+            else
+            {
+                pause.OnResumeGame();
+                setting.gameObject.SetActive(false);
+            }
         }
-        else if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            pause.OpenPausePanel();
-        }
-
-
 
     }
+
+
     public void Stop()
     {
         Time.timeScale = 0;

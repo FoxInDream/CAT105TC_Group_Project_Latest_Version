@@ -18,4 +18,8 @@ public class Setting : MonoBehaviour
         gameObject.SetActive(false);
         pause.gameObject.SetActive(true);
     }
+
+    public void OnClickOpenSettingInMainMenu() {
+        gameObject.SetActive(false);
+    }
 }

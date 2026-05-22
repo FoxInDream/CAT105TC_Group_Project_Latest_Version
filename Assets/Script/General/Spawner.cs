@@ -347,7 +347,7 @@ public class Spawner : MonoBehaviour
 
 
 
-    private Vector3 GetSafeSpawnPoint()//Mainly used for Tree Monster spawning, preventing them from spawning too close and affecting visual effects
+    public Vector3 GetSafeSpawnPoint()//Mainly used for Tree Monster spawning, preventing them from spawning too close and affecting visual effects
     {
         while (true) 
         {

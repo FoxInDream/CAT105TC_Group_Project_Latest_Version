@@ -2215,7 +2215,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1458630551}
         m_TargetAssemblyTypeName: Setting, Assembly-CSharp
-        m_MethodName: OnClickCloseSetting
+        m_MethodName: OnClickOpenSettingInMainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
